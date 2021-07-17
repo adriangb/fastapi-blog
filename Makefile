@@ -27,6 +27,9 @@ dev-db-kill:
 dev-backend-kill:
 	$(DC_EXEC) -f $(DC_DIR)/$(DC_APP_DEV) kill backend
 
+dev-frontend-kill:
+	$(DC_EXEC) -f $(DC_DIR)/$(DC_APP_DEV) kill frontend
+
 dev-db-start:
 	$(DC_EXEC) -f $(DC_DIR)/$(DC_APP_DEV) up --remove-orphans -d db-fapi-blog
 

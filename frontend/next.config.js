@@ -1,20 +1,33 @@
+// module.exports = {
+//   env: {
+//     BACKEND_URI: 'http://backend:8000',
+//   },
+//   webpack: (config) => {
+//     config.resolve.fallback = { 
+//       fs: false, 
+//       path: false,
+//       child_process: false,
+//       crypto: false,
+//       os: false,
+//       tty: false,
+//       workd_threads: true,
+//     },
+//   },
+//   return config,
+// };
+
 module.exports = {
   env: {
-    BACKEND_URI: 'http://backend:8000'
+    BACKEND_URI: 'http://localhost:8000',
   },
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    // without this we get
-    // ./node_modules/@babel/core/lib/transformation/normalize-file.js:9:0
-    // Module not found: Can't resolve 'fs'
-    // null
-    // as a result of next-mdx-remote
-    // ref: https://coderberry.com/posts/mdx_next
-    if (!isServer) {
-      config.node = {
-        fs: "empty",
-      };
-    }
+  // future: {
+  //   webpack5: true,
+  // },
+  webpack: (config) => {
+    config.resolve.fallback = { 
+      fs: false,
+      path: false,
+    };
 
     return config;
   },
